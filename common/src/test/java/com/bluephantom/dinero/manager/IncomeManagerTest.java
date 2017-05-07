@@ -22,35 +22,6 @@ public class IncomeManagerTest extends TestCase {
 		manager = IncomeManager.getInstance();
 	}
 
-	public void testIncomeValuation() {
-		Calendar c = Calendar.getInstance();
-		c.set(2017, 5, 24);
-		Income income1 = new Income("CF Owner1", "CF 1", 100.0, c.getTime());
-		c.set(2017, 5, 23);
-		Income income2 = new Income("CF Owner2", "CF 1", 150.0, c.getTime());
-		manager.addIncome(income1);
-		manager.addIncome(income2);
-		assertEquals(manager.valuationFromIncomes(), 250.0);
-	}
-
-	public void testAssetValuation() {
-		Asset asset = new Asset("Asset 1", "Asset 1", "Asset 1", 5.0);
-		Cashflow cf1 = new Cashflow();
-		cf1.setCashflowType(CashflowType.OUT);
-		cf1.setCashflowAmount(1.0);
-		Cashflow cf2 = new Cashflow();
-		cf2.setCashflowAmount(2.0);
-		cf2.setCashflowType(CashflowType.IN);
-		Cashflow cf3 = new Cashflow();
-		cf3.setCashflowAmount(3.0);
-		cf3.setCashflowType(CashflowType.OUT);
-		asset.addCashflow(cf1);
-		asset.addCashflow(cf2);
-		asset.addCashflow(cf3);
-		manager.addAsset(asset);
-		assertEquals(manager.valuationFromAssets(), -2.0);
-	}
-
 	public void testTotalValuation() {
 		Calendar c = Calendar.getInstance();
 		c.set(2017, 5, 24);
